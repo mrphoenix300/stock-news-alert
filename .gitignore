@@ -15,3 +15,5 @@ __pycache__/
 # IDE settings (Optional, but good practice)
 .vscode/
 .idea/
+
+.DS_Store/
