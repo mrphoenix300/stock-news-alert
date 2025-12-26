@@ -34,7 +34,8 @@ If a significant fluctuation is detected (defined as a **>5% increase or decreas
 git clone https://github.com/mrphoenix300/stock-news-alert.git
 cd stock-news-alert
 ```
-### 2. Create Virtual EnvironmentIt is recommended to use a virtual environment to manage dependencies.
+### 2. Create Virtual Environment
+It is recommended to use a virtual environment to manage dependencies.
 ```bash
 python -m venv .venv
 source .venv/bin/activate  # macOS/Linux
@@ -72,7 +73,7 @@ This project highlights the following technical skills:
 * **RESTful API Consumption**: Constructing parameterized queries and handling JSON responses from multiple distinct providers.
 * **Data Processing**: Parsing complex nested dictionaries and performing list slicing/comprehensions to extract relevant metrics.
 * **Security Best Practices**: Utilizing os.environ to decouple sensitive credentials (API Keys/Auth Tokens) from the codebase.
-* **Algorithmic Logic**: Implementing conditional control flow based on mathematical thresholds (volatility > 5%).
+* **Algorithmic Logic**: Implementing conditional control flow based on mathematical thresholds (volatility >= 5%).
 
 ## 📄 License
 
