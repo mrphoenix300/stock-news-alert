@@ -66,6 +66,6 @@ if abs(percentage100) >= 5:
         message = client.messages.create(
             messaging_service_sid='MG61833003253135bfefe2edc065b5f6bc',
             body=f"{STOCK}: {up_down}{floor(percentage100)}%\n{event['title']}\n{event['description']}",
-            to='+18777804236'
+            to=os.environ.get("TEMP_PHONE_NUMBER")
         )
         print(message.status)

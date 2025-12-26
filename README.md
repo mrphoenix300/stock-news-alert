@@ -55,7 +55,8 @@ queued
 queued
 queued
 ```
-Expected Output (SMS):TSLA: 🔻5%Headline: Why Tesla Stock Dropped Today...Brief: Shares of the EV maker slid following...
+**Expected Output (SMS)**: \
+&emsp;TSLA: 🔻5%Headline: Why Tesla Stock Dropped Today...Brief: Shares of the EV maker slid following...
 ## 💡 Key Competencies Demonstrated
 This project highlights the following technical skills:
 * **RESTful API Consumption**: Constructing parameterized queries and handling JSON responses from multiple distinct providers.
