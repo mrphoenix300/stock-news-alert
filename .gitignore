@@ -1,0 +1,17 @@
+# The virtual environment (as requested)
+.venv/
+venv/
+
+# Local Environment Variables (CRITICAL)
+# Since your code uses os.environ, you likely have a file storing
+# your API keys locally. Do NOT upload this file.
+.env
+.env.local
+
+# Python compiled files (Junk files)
+__pycache__/
+*.py[cod]
+
+# IDE settings (Optional, but good practice)
+.vscode/
+.idea/
