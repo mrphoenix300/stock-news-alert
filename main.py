@@ -63,10 +63,11 @@ if abs(percentage100) >= 5:
     news3 = news[:3]
 
     receiver = os.environ.get("TEMP_PHONE_NUMBER")
+    messaging_sid = os.environ.get("MESSAGING_SERVICE_SID")
 
     for event in news3:
         message = client.messages.create(
-            messaging_service_sid='MG61833003253135bfefe2edc065b5f6bc',
+            messaging_service_sid=messaging_sid,
             body=f"{STOCK}: {up_down}{floor(percentage100)}%\n{event['title']}\n{event['description']}",
             to=receiver
         )

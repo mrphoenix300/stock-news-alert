@@ -49,6 +49,8 @@ Security is a priority for this project. API keys are not hardcoded. You must ex
 | `AUTH_TOKEN` | Twilio Authentication Token |
 | `API_KEY1` | Alpha Vantage API Key |
 | `API_KEY2` | NewsAPI Key |
+| `TEMP_NUMBER_NUMBER` | Phone number of receiver (virtual) |
+| `MESSAGING_SERVICE_SID` | ID of this conversation (SENDER -> RECEIVER) |
 ## 🚀 Usage
 Execute the script from the root directory:
 ```bash
