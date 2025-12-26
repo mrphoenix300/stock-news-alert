@@ -42,7 +42,7 @@ source .venv/bin/activate  # macOS/Linux
 ```
 ### 3. Install DependenciesBashpip install -r requirements.txt
 ### 4. Configuration
-Security is a priority for this project. API keys are not hardcoded. You must export the following environment variables in your terminal or use a .env file. \
+Security is a priority for this project. API keys are not hardcoded. You must export the following environment variables in your terminal or use a .env file. 
 | Variable | Description |
 | :--- | :--- |
 | `ACCOUNT_SID` | Twilio Account SID |
