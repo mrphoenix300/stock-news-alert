@@ -40,7 +40,9 @@ python -m venv .venv
 source .venv/bin/activate  # macOS/Linux
 # .venv\Scripts\activate   # Windows
 ```
-### 3. Install DependenciesBashpip install -r requirements.txt
+### 3. Install Dependencies
+* requests
+* twilio
 ### 4. Configuration
 Security is a priority for this project. API keys are not hardcoded. You must export the following environment variables in your terminal or use a .env file. 
 | Variable | Description |
