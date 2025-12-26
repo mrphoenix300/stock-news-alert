@@ -31,7 +31,7 @@ If a significant fluctuation is detected (defined as a **>5% increase or decreas
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/mrphoenix300/stock-news-alert.git](https://github.com/mrphoenix300/stock-news-alert.git)
+git clone https://github.com/mrphoenix300/stock-news-alert.git
 cd stock-news-alert
 ```
 ### 2. Create Virtual EnvironmentIt is recommended to use a virtual environment to manage dependencies.
@@ -41,8 +41,14 @@ source .venv/bin/activate  # macOS/Linux
 # .venv\Scripts\activate   # Windows
 ```
 ### 3. Install DependenciesBashpip install -r requirements.txt
-### 4. ConfigurationSecurity is a priority for this project. API keys are not hardcoded. You must export the following environment variables in your terminal or use a .env file.
-
+### 4. Configuration
+Security is a priority for this project. API keys are not hardcoded. You must export the following environment variables in your terminal or use a .env file. \
+| Variable | Description |
+| :--- | :--- |
+| `ACCOUNT_SID` | Twilio Account SID |
+| `AUTH_TOKEN` | Twilio Authentication Token |
+| `API_KEY1` | Alpha Vantage API Key |
+| `API_KEY2` | NewsAPI Key |
 ## 🚀 Usage
 Execute the script from the root directory:
 ```bash
