@@ -22,19 +22,23 @@ response = requests.get(url, params=params, timeout=15)
 response.raise_for_status()
 
 data = response.json()
+if not isinstance(data, dict):
+    raise ValueError("Alpha Vantage returned an invalid response.")
 
-days = data["Time Series (Daily)"]
+days = data.get("Time Series (Daily)")
+if not isinstance(days, dict) or len(days) < 2:
+    raise ValueError("Alpha Vantage did not return two trading days of stock prices.")
 
-last_two_days = []
-i = 0
-for day in days.values():
-    if i == 2:
-        break
-    last_two_days.append(day)
-    i += 1
+# Use the latest two dates explicitly, irrespective of JSON field ordering.
+latest_dates = sorted(days, reverse=True)[:2]
+try:
+    new_closed_price = float(days[latest_dates[0]]["4. close"])
+    old_closed_price = float(days[latest_dates[1]]["4. close"])
+except (KeyError, TypeError, ValueError) as exc:
+    raise ValueError("Alpha Vantage returned invalid closing-price data.") from exc
 
-new_closed_price = float(last_two_days[0]["4. close"])
-old_closed_price = float(last_two_days[1]["4. close"])
+if old_closed_price <= 0 or new_closed_price <= 0:
+    raise ValueError("Alpha Vantage returned a non-positive closing price.")
 percentage100 = ((new_closed_price - old_closed_price) / old_closed_price) * 100
 print(percentage100)
 
@@ -58,9 +62,14 @@ if abs(percentage100) >= 5:
     response2 = requests.get(url2, params=params2, timeout=15)
     response2.raise_for_status()
 
-    news = response2.json()["articles"]
+    news_data = response2.json()
+    if not isinstance(news_data, dict) or not isinstance(news_data.get("articles"), list):
+        raise ValueError("NewsAPI did not return a valid list of articles.")
 
-    news3 = news[:3]
+    news3 = [
+        article for article in news_data["articles"]
+        if isinstance(article, dict) and isinstance(article.get("title"), str)
+    ][:3]
 
     receiver = os.environ.get("TEMP_PHONE_NUMBER")
     messaging_sid = os.environ.get("MESSAGING_SERVICE_SID")
@@ -68,7 +77,7 @@ if abs(percentage100) >= 5:
     for event in news3:
         message = client.messages.create(
             messaging_service_sid=messaging_sid,
-            body=f"{STOCK}: {up_down}{floor(percentage100)}%\n{event['title']}\n{event['description']}",
+            body=f"{STOCK}: {up_down}{floor(percentage100)}%\n{event['title']}\n{event.get('description') or ''}",
             to=receiver
         )
         print(message.status)
