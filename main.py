@@ -18,7 +18,7 @@ params = {
     "apikey": os.environ.get("API_KEY1"),
 }
 
-response = requests.get(url, params)
+response = requests.get(url, params=params, timeout=15)
 response.raise_for_status()
 
 data = response.json()
@@ -55,7 +55,7 @@ if abs(percentage100) >= 5:
         "category": "business",
     }
 
-    response2 = requests.get(url2, params2)
+    response2 = requests.get(url2, params=params2, timeout=15)
     response2.raise_for_status()
 
     news = response2.json()["articles"]
